@@ -1,4 +1,3 @@
-
 class ResizableArray:
     def __init__(self, size):
         self.size = size
@@ -43,7 +42,10 @@ class ResizableArray:
         '''
         if index > self.no_of_elements:
             return 'Array Has not Reached To It Index'
-        self.array[index]=value
+        elif value == None:
+            return 'You can not set value to None'
+        else:
+            self.array[index]=value
 
     def get(self, index):
         '''
@@ -57,6 +59,34 @@ class ResizableArray:
         '''
         Remove the value from the given index
         '''
+        if self.array[index] == None:
+            return "Array Index is Already None"
+
+        elif index == self.no_of_elements:
+            self.array[index] = None
+            self.no_of_elements -= 1
+        elif index == 0:
+            self.newarray = [None for i in range(self.size)]
+            for i in range(len(self.newarray)-1):
+                self.newarray[i] = self.array[i+1]
+            self.array = self.newarray
+            self.no_of_elements -=1
+        else:
+            self.newarray = [None for i in range(self.size)]
+            self.removed_array  = self.array[:index] + self.array[index:]
+            for i in range(len(self.removed_array)):
+                self.newarray[i] = self.removed_array[i]
+            self.array = self.newarray
+            self.no_of_elements -=1
+
+        if self.no_of_elements*2 == self.size:
+            self.resize('shrink')
+            
+
+
+
+
+        
         
 
 
@@ -64,8 +94,8 @@ class ResizableArray:
         '''
         Print all the values of an array
         '''
-        for i in self.array:
-            print(f'{i}',end=' ')
+        return self.array
+        print('\n*********************')
 
     def resize(self,operation):
         '''
@@ -77,13 +107,48 @@ class ResizableArray:
             for i in range(len(self.array)):
                 self.newarray[i] = self.array[i]
             self.array = self.newarray
-            print('Array Has Been Resized')
+            print('Array Has Been Resized(Expanded)')
+        if operation == 'shrink':
+            self.size //= 2
+            self.newarray = [None for i in range(self.size)]
+            for i in range(len(self.newarray)):
+                self.newarray[i] = self.array[i]
+            self.array = self.newarray
+            print('Array Has Been Resized(Shrink)')
         
             
 obj = ResizableArray(4)
+print('\nINSERT========')
 obj.insert(0,10)
 obj.insert(1,9)
 obj.insert(2,8)
 obj.insert(3,7)
+print('***********ARRAY**********')
+print(obj.traverse())
+print('\n*********************')
+print('\nINSERT FOR EXPAND========')
 obj.insert(4,40)
+print('***********ARRAY**********')
+print(obj.traverse())
+print('\n*********************')
+
+print('\nUPDATE========')
 obj.update(0,20)
+print('***********ARRAY**********')
+print(obj.traverse())
+print('\n*********************')
+
+print('\nREMOVE========')
+obj.remove(0)
+print('***********ARRAY**********')
+print(obj.traverse())
+print('\n*********************')
+print('\nREMOVE FOR SHRINK========')
+obj.remove(2)
+print('***********ARRAY**********')
+print(obj.traverse())
+print('\n*********************')
+obj.remove(2)
+print('***********ARRAY**********')
+print(obj.traverse())
+print('\n*********************')
