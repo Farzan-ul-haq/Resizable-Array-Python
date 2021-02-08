@@ -5,10 +5,11 @@ Created by Farzan ul Haq and Sufyan Nasir.
 
 # Documentation
 
-# # Operations
+## Operations
 Following are the operations of this project:
 
--Insert: it will insert value at the given index.
+###-Insert: 
+It will insert value at the given index.
 
 -update: it will update the value at the given index.
 
