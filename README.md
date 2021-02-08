@@ -3,9 +3,9 @@
 Resizeable(Dynamic) Array is the group project of Data Structures and Algorithms
 Created by Farzan ul Haq and Sufyan Nasir.
 
-Documentation
+# Documentation
 
-Operations
+# # Operations
 Following are the operations of this project:
 
 -Insert: it will insert value at the given index.
