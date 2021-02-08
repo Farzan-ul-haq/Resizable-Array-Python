@@ -29,4 +29,3 @@ Access each element (item) of an array and print them.
 ## Compatibility
 Python3 and upper versions.
 
-## Usage:
